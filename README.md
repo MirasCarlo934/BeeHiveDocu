@@ -1,7 +1,6 @@
+![](/images/bee_hive_logo.png)
 # What is BeeHive?
 BeeHive is an IoT platform designed to deliver on-the-cloud solutions centered on delivering IoT devices (or *Things*) to a wide market of end-users. As an IoT platform, it aims to bridge the gap between device makers and their end-users by providing a unified API which offers a vast amount of services, allowing for increased market presence without the overhead costs of IoT platform development.
-
-
 
 # Who Benefits from BeeHive?
 ## What's the Problem?
