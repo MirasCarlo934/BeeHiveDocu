@@ -61,7 +61,7 @@ Yes! BeeHive already exists as a proof-of-concept and can be accessed over the i
 
 *Please read the following documentation first before using BeeHive.*
 
-- ***!!READ FIRST!!*** [High-Level Documentation]()
+- ***!!READ FIRST!!*** [High-Level Documentation](https://mirascarlo934.github.io/BeeHiveDocu/high-level-documentation.md)
 - [Thing Management Platform](https://documenter.getpostman.com/view/11218501/SztEY6Ao) (Postman Documenter)
 - [Product Management Platform](https://documenter.getpostman.com/view/11218501/T1DngxJv) (Postman Documenter)
 - [Automation Engine](https://documenter.getpostman.com/view/11218501/SztEY6hi) (Postman Documenter)
