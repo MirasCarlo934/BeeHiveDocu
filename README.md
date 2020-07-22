@@ -10,7 +10,7 @@ Currently, the IoT industry is a melting pot of a multitude of technologies. The
 ### Development
 IoT systems encompass both software and hardware development. The primary architecture for IoT systems makes use of an IoT platform. An IoT platform is a multi-layer technology that enables straightforward provisioning, management, and automation of connected devices. 
 
-![](/Users/carlomiras/Documents/Symphony/git/BeeHive/0_docs/images/IoT-platform.png)
+![](/images/IoT-platform.png)
 
 At the lowest level of this architecture are IoT-capable devices of low-power, low-cost microcontrollers that connect over a network. These devices are then programmed to communicate with the IoT platform that will manage the device. At the highest level is the IoT platform itself, which on its own needs tremendous amounts of planning, development, and maintenance. Developing every level of an IoT system technology stack is resource-intensive and time-consuming, which overshadows its perceived benefits.
 
@@ -48,7 +48,7 @@ For the end-users, BeeHive serves as the IoT platform which orchestrates their d
 
 BeeHive caters to both makers and end-users. Makers make devices that will run on BeeHive and end-users subscribe to BeeHive to use the devices.
 
-![](/Users/carlomiras/Documents/Symphony/git/BeeHive/0_docs/images/BeeHive Maker-User Relationship Diagram.png)
+![](/images/BeeHive Maker-User Relationship Diagram.png)
 
 Under a unified API, device makers can develp devices that reach a wide market of applications. BeeHive allows for makers to focus only on developing devices which the end-users will use for their own IoT applications. This alleviates the burden for makers on which markets they need to target and which APIs they need to adopt in order to reach those target markets. Under a unified API, the entire market will be open to them.
 
