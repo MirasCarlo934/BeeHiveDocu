@@ -1,4 +1,4 @@
-![](/images/bee_hive_logo.png)
+![](images/bee_hive_logo.png)
 # What is BeeHive?
 BeeHive is an IoT platform designed to deliver on-the-cloud solutions centered on delivering IoT devices (or *Things*) to a wide market of end-users. As an IoT platform, it aims to bridge the gap between device makers and their end-users by providing a unified API which offers a vast amount of services, allowing for increased market presence without the overhead costs of IoT platform development.
 
@@ -47,7 +47,7 @@ For the end-users, BeeHive serves as the IoT platform which orchestrates their d
 
 BeeHive caters to both makers and end-users. Makers make devices that will run on BeeHive and end-users subscribe to BeeHive to use the devices.
 
-![](/images/BeeHive_Maker_User_Relationship_Diagram.png)
+![](images/BeeHive_Maker_User_Relationship_Diagram.png)
 
 Under a unified API, device makers can develp devices that reach a wide market of applications. BeeHive allows for makers to focus only on developing devices which the end-users will use for their own IoT applications. This alleviates the burden for makers on which markets they need to target and which APIs they need to adopt in order to reach those target markets. Under a unified API, the entire market will be open to them.
 
@@ -63,6 +63,7 @@ Yes! BeeHive already exists as a proof-of-concept and can be accessed over the i
 
 - ***!!READ FIRST!!*** [High-Level Documentation]()
 - [Thing Management Platform](https://documenter.getpostman.com/view/11218501/SztEY6Ao) (Postman Documenter)
+- [Product Management Platform](https://documenter.getpostman.com/view/11218501/T1DngxJv) (Postman Documenter)
 - [Automation Engine](https://documenter.getpostman.com/view/11218501/SztEY6hi) (Postman Documenter)
 - [Data Collection and Analytics](https://documenter.getpostman.com/view/11218501/SztEY6hj) (Postman Documenter)
 - [MQTT API]()
