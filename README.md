@@ -48,7 +48,7 @@ For the end-users, BeeHive serves as the IoT platform which orchestrates their d
 
 BeeHive caters to both makers and end-users. Makers make devices that will run on BeeHive and end-users subscribe to BeeHive to use the devices.
 
-![](/images/BeeHive Maker-User Relationship Diagram.png)
+![](/images/BeeHive_Maker_User_Relationship_Diagram.png)
 
 Under a unified API, device makers can develp devices that reach a wide market of applications. BeeHive allows for makers to focus only on developing devices which the end-users will use for their own IoT applications. This alleviates the burden for makers on which markets they need to target and which APIs they need to adopt in order to reach those target markets. Under a unified API, the entire market will be open to them.
 
