@@ -1,17 +1,30 @@
+# What is this Document?
+
+This document highlights the services and key concepts of BeeHive from a **maker** perspective, giving a high-level insight on how to develop devices for the BeeHive IoT universe. 
+
 # Device Lifecycle
 
 IoT devices typically follow the following lifecycle:
+
+![](images/device-lifecycle.png)
 
 1. Development
 2. Production
 3. End-user Procurement
 4. Set-up and Use
 5. Post-production
-6. Obsoletion
 
-![](images/device-lifecycle.png)
+This lifecycle concerns three entities: the **maker**, the **end-user**, and **BeeHive**. The table below describes the areas of concern for each entity:
 
-BeeHive concerns itself in three phases in this lifecycle: **Development**, **Set-up and Use**, and **Post-Production**.
+| Lifecycle Phases     | maker     | end-user  | BeeHive   |
+| -------------------- | --------- | --------- | --------- |
+| Development          | ***YES*** | no        | ***YES*** |
+| Production           | ***YES*** | no        | no        |
+| End-user Procurement | ***YES*** | ***YES*** | no        |
+| Set-up and Use       | no        | ***YES*** | ***YES*** |
+| Post-production      | ***YES*** | no        | ***YES*** |
+
+BeeHive concerns itself in three phases: **development**, **set-up and use**, and **post-production**.
 
 # Services
 
@@ -24,9 +37,15 @@ Currently, BeeHive exists as a proof-of-concept and offers 6 basic services:
 - MQTT API
 - GUI
 
+This section discusses services only on a high-level perspective. For more details, specifically on how-to-use, refer to the API documentation of each service.
+
 ## Thing Management Platform
 
 The Thing Management Platform is the heart of BeeHive which manages the registration, management, and control of devices in the BeeHive IoT universe. These devices are referred to as *Things* and will be referred to as such throughout this documentation.
+
+This service is an **end-user service** for the **set-up and use** phase of a device lifecycle. End-users interact directly with this service for Thing management and control.
+
+The detailed API documentation can be found [here](https://documenter.getpostman.com/view/11218501/SztEY6Ao).
 
 ### Things
 
@@ -53,11 +72,15 @@ BeeHive views attributes as a direct interface between a Thing and its real-worl
 
 Groups are a virtual entity which allows for organization of Things based on functionality and/or user preference. Things can be grouped into one or multiple groups and groups can be grouped into other groups.
 
-Beyond simple organization, groups can also be used to collate data from contained Things. See [Automation Engine](#Automation Engine) and [Data Collection and Analytics](#Data Collection and Analytics) for more information on this functionality.
+Beyond simple organization, groups can also be used to collate data from contained Things. See [Automation Engine API](https://documenter.getpostman.com/view/11218501/SztEY6hi) and [Data Collection and Analytics API](https://documenter.getpostman.com/view/11218501/SztEY6hj) for more information on this functionality.
 
 ## Product Management Platform
 
 The Product Management Platform caters specifically to makers that look to mass-produce their Things for the public. This service offers the ability for makers to create and manage *Products* and other maker-related tools such as OTA firmware updating.
+
+This service is a **maker service** for the **development** and **post-production** phases of a device lifecycle.
+
+The detailed API documentation can be found [here](https://documenter.getpostman.com/view/11218501/T1DngxJv).
 
 ### Products
 
@@ -71,7 +94,23 @@ Makers can also update the firmware of their Things post-production via the OTA 
 
 ## Automation Engine
 
+The Automation Engine is a *rule engine* designed to automate workflows consisting of different Things working together. This service holds a collection of *Rules* which control Things based on predefined conditions.
+
+This service is an **end-user service** for the **set-up and use** phase of a device lifecycle.
+
+The detailed API documentation can be found [here](https://documenter.getpostman.com/view/11218501/SztEY6hi).
+
+### Rules
+
+A Rule is an ***end-user-defined***, ***event-triggered***, ***condition-action*** workflow that works on the current state of Things, specifically their attributes.
+
+A Rule consists of two parts: the **condition** and **action**. The end-user sets the condition and, if met, the Rule executes the action. Both parts consist of attributes which the Rule works on. A Rule is evaluated every time a *condition attribute* changes value. If the entire condition is met, the *action attribute/s* then changes value based on what the user defined.
+
+Rules are written in MVEL.
+
 ## Data Collection and Analytics
+
+The detailed API documentation can be found [here](https://documenter.getpostman.com/view/11218501/SztEY6hj).
 
 ## MQTT API
 
