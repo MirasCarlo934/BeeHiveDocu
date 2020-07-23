@@ -114,9 +114,11 @@ The detailed API documentation can be found [here](https://documenter.getpostman
 
 A Rule is an ***end-user-defined***, ***event-triggered***, ***condition-action*** workflow that works on the current state of Things, specifically their attributes.
 
-A Rule consists of two parts: the **condition** and **action**. The end-user sets the condition and, if met, the Rule executes the action. Both parts consist of attributes which the Rule works on. A Rule is evaluated every time a *condition attribute* changes value. If the entire condition is met, the *action attribute/s* then changes value based on what the user defined.
+A rule consists of two parts: the **condition** and **action**. The end-user sets the condition and, if met, the rule executes the action. Both parts consist of attributes which the Rule works on. A rule is evaluated every time a *condition attribute* changes value. If the entire condition is met, the *action attribute/s* then changes value based on what the user defined.
 
+The simple rule UML below consists of one *condition attribute*: Thing A attribute 1; and one *action attribute*: Thing B attribute 2.
 
+![](images/high-level_Rule_UML.png)
 
 Rules are written in MVEL.
 
