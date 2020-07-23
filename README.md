@@ -9,7 +9,7 @@ Currently, the IoT industry is a melting pot of a multitude of technologies. The
 ### Development
 IoT systems encompass both software and hardware development. The primary architecture for IoT systems makes use of an IoT platform. An IoT platform is a multi-layer technology that enables straightforward provisioning, management, and automation of connected devices. 
 
-![](/images/IoT-platform.png)
+![](images/IoT-platform.png)
 
 At the lowest level of this architecture are IoT-capable devices of low-power, low-cost microcontrollers that connect over a network. These devices are then programmed to communicate with the IoT platform that will manage the device. At the highest level is the IoT platform itself, which on its own needs tremendous amounts of planning, development, and maintenance. Developing every level of an IoT system technology stack is resource-intensive and time-consuming, which overshadows its perceived benefits.
 
