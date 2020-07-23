@@ -39,6 +39,16 @@ Currently, BeeHive exists as a proof-of-concept and offers 6 basic services:
 
 This section discusses services only on a high-level perspective. For more details, specifically on how-to-use, refer to the API documentation of each service.
 
+### Proof-of-Concept
+
+Since BeeHive is just in a proof-of-concept stage, there are many limitations:
+
+1. Authentication — There currently exists no maker and end-user authentication. Makers and end-users are distinguished from each other solely on their maker ID and user ID. Before trying out  services, makers and end-users are expected to generate their own ID (preferably UUID) for use in BeeHive's services.
+2. Security — All data sent to and from BeeHive are transported in plaintext. Sensitive information ***must not*** be involved when trying out BeeHive.
+3. System Availability — The POC runs only on one server without any runtime contingency measures. As such, the system ***may*** crash due to various things such as high traffic and resource-intensive processes (ie. Automation Engine rule evaluation). We will try to keep runtime at a maximum. If problems occur, contact us at [contactus.beehive@gmail.com](contactus.beehive@gmail.com).
+
+*The POC exists for potential makers and end-users for the sole purpose of trying out the services that BeeHive intends to offer. The current state of these services are not final and more services may be added in the future.* 
+
 ## Thing Management Platform
 
 The Thing Management Platform is the heart of BeeHive which manages the registration, management, and control of devices in the BeeHive IoT universe. These devices are referred to as *Things* and will be referred to as such throughout this documentation.
@@ -105,6 +115,8 @@ The detailed API documentation can be found [here](https://documenter.getpostman
 A Rule is an ***end-user-defined***, ***event-triggered***, ***condition-action*** workflow that works on the current state of Things, specifically their attributes.
 
 A Rule consists of two parts: the **condition** and **action**. The end-user sets the condition and, if met, the Rule executes the action. Both parts consist of attributes which the Rule works on. A Rule is evaluated every time a *condition attribute* changes value. If the entire condition is met, the *action attribute/s* then changes value based on what the user defined.
+
+
 
 Rules are written in MVEL.
 
