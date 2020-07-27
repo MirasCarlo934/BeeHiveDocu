@@ -124,6 +124,8 @@ Rules are written in MVEL.
 
 ## Data Collection and Analytics
 
+Data is an integral part of IoT applications and BeeHive aims to deliver comprehensive data collection and analysis tools to the end-user.
+
 The detailed API documentation can be found [here](https://documenter.getpostman.com/view/11218501/SztEY6hj).
 
 ## MQTT API
