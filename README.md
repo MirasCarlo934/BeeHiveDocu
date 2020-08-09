@@ -2,6 +2,10 @@
 # What is BeeHive?
 BeeHive is an IoT platform designed to deliver on-the-cloud solutions centered on delivering IoT devices (or *Things*) to a wide market of end-users. As an IoT platform, it aims to bridge the gap between device makers and their end-users by providing a unified API which offers a vast amount of services, allowing for increased market presence without the overhead costs of IoT platform development.
 
+# The Universal IoT Platform
+
+
+
 # Who Benefits from BeeHive?
 ## What's the Problem?
 Currently, the IoT industry is a melting pot of a multitude of technologies. The smart scene which includes but not limited to smart home, smart city, smart grid, and smart farming, are different sides of the same polygon. While their applications are in very different fields, the underlying concept is just the same: connect multiple devices together to perform specific tasks. This simple concept does not have a simple solution, however. These branches of the smart scene are offered with various solutions with differing levels of complexity. Smart home is dominated by Google, Apple, and Amazon with their respective smart home IoT platforms which are, to an extent, easy to consume by both device makers and end-users. The other smart scene branches do not have the luxury of ready-made IoT platforms that will readily suit their needs. Usually, institutions looking to smartify hire dedicated development teams to build the hardware, software, and infrastructure needed. This is a resource-intensive endeavor which discourages most institutions from availing IoT solutions.
