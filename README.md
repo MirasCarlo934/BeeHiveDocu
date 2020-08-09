@@ -33,7 +33,7 @@ Smarthome device manufacturers circumvent this problem by implementing other ven
 
 ### API Hell
 
-There are many IoT platforms with their own unique APIs which cater to very specific areas of the market. 
+There are many IoT platforms with their own unique APIs which cater to very specific areas of the market. Makers who desire a wide reach have to adopt multiple APIs, resulting in a development nightmare. Adopting multiple APIs is time-consuming and resource-intensive, requiring large development teams.
 
 ## BeeHive as a Universal IoT Platfrom
 
