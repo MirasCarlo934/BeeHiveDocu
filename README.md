@@ -19,25 +19,32 @@ Save time and resources in setting up your own IoT platform with endless configu
 2. Automation Engine
 3. Data Collection and Analytics
 4. Ready-to-use MQTT broker
-5. Web Application GUI
+5. Web Application GUI for Thing Management
 
-All services run on-the-cloud, eliminating the need for local infrastructure. 
+All services run on-the-cloud, eliminating the need for local infrastructure. BeeHive's unified API focuses on simplicity and intuitiveness for easy end-user adoption and use of the listed services.
 
 *\*services listed are not final, more may be added in the future*
 
 ## For the Maker
 
-BeeHive aims to simplify the development process for makers by offering maker-centered services targeted on production and post-production stages of a device's lifecycle:
+BeeHive aims to simplify the development process for makers by offering maker-centered services* targeted on development, set-up and use, and post-production stages of a device's lifecycle:
 
-![](images/device-lifecycle.png)
+![](images/device-lifecycle-maker-services.png)
 
-BeeHive allows for makers to quickly develop devices on a unified easy-to-use API for a wide range of applications—from smarthomes to smart cities. Makers can also use the OTA service for updating device firmware.
+BeeHive allows for makers to quickly develop devices on a unified easy-to-use API for a wide range of applications—from smarthomes to smart cities. For makers looking for a wider customer reach, BeeHive also offers platform integration** with other IoT ecosystems (eg. Google, Amazon) without the hassle of adopting the individual APIs.
+
+BeeHive also offers post-production support by hosting OTA updates, allowing makers to eliminate dedicated infrastructure and host their aftermarket support completely on BeeHive.
+
+*\*services listed are not final, more may be added in the future*
+
+*\*\*not yet available, still under development*
 
 # I Would Like to Know More...
 
-There is a primer that discusses the background BeeHive in greater detail:
+We have made a primer and a high-level documentation that discusses BeeHive in greater detail:
 
-[BeeHive Primer](https://mirascarlo934.github.io/BeeHiveDocu/primer)
+* [BeeHive Primer](https://mirascarlo934.github.io/BeeHiveDocu/primer)
+* [High-Level Documentation](https://mirascarlo934.github.io/BeeHiveDocu/high-level-documentation)
 
 # Is There a Demo?
 
