@@ -29,11 +29,15 @@ The problem with this is that vendors often implement their own API and only off
 
 Smarthome device manufacturers circumvent this problem by implementing other vendor APIs for increasing their reach. This solution can become problematic as more APIs are implemented due to the fact that bigger development teams are needed to do the implementation. This effectively negates the benefits of subscribing to a vendor in the first place.
 
-## Development Hindrances for Makers
+## Hindrances for Makers
 
 ### API Hell
 
 There are many IoT platforms with their own unique APIs which cater to very specific areas of the market. Makers who desire a wide reach have to adopt multiple APIs, resulting in a development nightmare. Adopting multiple APIs is time-consuming and resource-intensive, requiring large development teams.
+
+### Aftermarket Support
+
+After the devices leave the production line, makers also need to establish an infrastructure for aftermarket support (eg. firmware updates). This requires even more planning and development.
 
 ## BeeHive as a Universal IoT Platfrom
 
