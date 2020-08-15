@@ -33,7 +33,7 @@ BeeHive aims to simplify the development process for makers by offering maker-ce
 
 BeeHive allows for makers to quickly develop devices on a unified easy-to-use API for a wide range of applications—from smarthomes to smart cities. For makers looking for a wider customer reach, BeeHive also offers platform integration** with other IoT ecosystems (eg. Google, Amazon) without the hassle of adopting the individual APIs.
 
-BeeHive also offers post-production support by hosting OTA updates, allowing makers to eliminate dedicated infrastructure and host their aftermarket support completely on BeeHive.
+BeeHive also offers post-production support, allowing makers to eliminate dedicated infrastructure and host their aftermarket support completely on BeeHive. Currently, BeeHive is capable of hosting OTA updates, a key post-production service for makers to update the firmware of their devices already in use.
 
 *\*services listed are not final, more may be added in the future*
 
