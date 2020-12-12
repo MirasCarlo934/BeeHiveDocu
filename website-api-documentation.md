@@ -30,6 +30,25 @@ If you enter the URL ***{{thingURL}}*** in your web browser, you'll find a field
 
 This HATEOAS principle is followed by BeeHive's API, essentially removing the need for reading long and repetitive API documents just to understand how to use the API.
 
+
+
+# How Do I Get My Thing to Talk With BeeHive?
+
+The MQTT API is the backbone of the Thing-to-BeeHive interface. MQTT is a lightweight, publish-subscribe communication protocol that is ideal for handling communication between Things and BeeHive. *This is the recommended API for Thing-to-BeeHive communication.*
+
+## MQTT vs HTTP
+
+While BeeHive can be completely interacted with using the HTTP RESTful API, HTTP is considered a very cumbersome protocol to use mainly due to the following:
+
+1. Heavy data overhead (e.g. HTTP headers)
+2. Slower compared to lower-level protocols (TCP)
+3. Unidirectional communication (BeeHive servers can't send to a Thing via HTTP)
+   - For Things to get updates from BeeHive, they will have to constantly request and request and request and request...
+
+MQTT mitigates these problems by running on top of TCP. It is also lightweight with a small code footprint, requiring small processing power to run. Because of these, MQTT is considered to be ideal for Things.
+
+
+
 # Thing Management Platform
 
 The Thing Management Platform manages three resources: Things, Attributes, and Groups:
@@ -38,7 +57,29 @@ The Thing Management Platform manages three resources: Things, Attributes, and G
 
 ## Thing
 
-A Thing has the following base fields:
+*show base fields and performable methods*
+
+## Attribute
+
+*show base fields and performable methods*
+
+## Group
+
+*show base fields and performable methods*
+
+
+
+For the API nitty-gritty, please refer to https://documenter.getpostman.com/view/11218501/SztEY6Ao
+
+
+
+# Automation Engine
+
+The Automation Engine manages all the automation rules, or *Rules* for short, that govern all Things in a user's BeeHive IoT universe. Rules dictate how Things interact with each other based on changes in their Attributes.
+
+*show how rules work*
+
+## Rule
 
 *show base fields and performable methods*
 
