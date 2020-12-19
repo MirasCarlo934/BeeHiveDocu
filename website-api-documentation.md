@@ -34,7 +34,7 @@ This HATEOAS principle is followed by BeeHive's API, essentially removing the ne
 
 # How Do I Get My Thing to Talk With BeeHive?
 
-The MQTT API is the backbone of the Thing-to-BeeHive interface. MQTT is a lightweight, publish-subscribe communication protocol that is ideal for handling communication between Things and BeeHive. *This is the recommended API for Thing-to-BeeHive communication.*
+The MQTT API is the backbone of the Thing-to-BeeHive interface. MQTT is a lightweight, publish-subscribe communication protocol that is ideal for handling communication between Things and BeeHive. *This is the recommended API for communication between Things and BeeHive.*
 
 ## MQTT vs HTTP
 
@@ -69,7 +69,7 @@ The Thing Management Platform manages three resources: Things, Attributes, and G
 
 
 
-For the API nitty-gritty, please refer to https://documenter.getpostman.com/view/11218501/SztEY6Ao
+Full API documentation: https://documenter.getpostman.com/view/11218501/SztEY6Ao
 
 
 
@@ -82,4 +82,62 @@ The Automation Engine manages all the automation rules, or *Rules* for short, th
 ## Rule
 
 *show base fields and performable methods*
+
+Rule execution is *event-based*. Rules are only evaluated and executed when a Thing's Attribute changes value.
+
+{{ruleJSON}}
+
+The JSON above is an example of a Rule. It declares two (2) Attributes: *Attribute **{{ruleJSON.attributes[0].aid}}*** of *Thing **{{ruleJSON.attributes[0].uid}}*** and *Attribute **{{ruleJSON.attributes[1].aid}}*** of *Thing **{{ruleJSON.attributes[1].uid}}***. The first Attribute is declared as a ***condition Attribute*** which means it's to be monitored for its value change to evaluate whether or not the Rule executes.
+
+The next part is the *condition block* which contains ***{{ruleJSON.condition}}***. If this condition is satisfied, the Rule executes the *action **{{ruleJSON.actions}}***.  
+
+To test this rule, let's set-up our Things first:
+
+{{ruleThingsPutCURL}}
+
+If you send the Rule JSON above to BeeHive:
+
+{{rulePutCURL}}
+
+It will add the Rule with the RID (Rule ID) ***{{rid}}***. Now, try changing the value of the condition Attribute:
+
+{{ruleAttrValueChangePutCURL}}
+
+Upon accessing the value of the other Attribute:
+
+{{ruleAttrValueGetCURL}}
+
+You'll see that the Attribute value changed! You can play around these two Attributes to further see how your sample Rule runs.
+
+### Cascaded Rules
+
+Because of the way Rules operate, you can set-up a collection of Rules that are dependent on the execution of other Rules. If **Rule 1** changes *Attribute 2* based on the value of *Attribute 1*, you can create **Rule 2** that changes *Attribute 3 and 4* based on the value of *Attribute 2*. BeeHive intelligently *cascades* these Rules together for a seamless operation.
+
+*show cascaded rules diagram*
+
+BeeHive is also smart enough to warn you of any circular references to your Rules.
+
+*show circular rules diagram*
+
+By default, Rules that have action Attributes that are the condition Attributes of Rules preceding it in the Rule cascade chain will not be accepted by BeeHive.
+
+It's important to keep track of your Rules, especially when making use of cascaded Rules. While circular references can be easily avoided, BeeHive does not warn about *spaghettified* Rule chains!
+
+Using Rules, you can set-up the functionality of your entire IoT universe without having to think about interconnecting your Things or how to send data between them. *With BeeHive, you have centralized control over the entire IoT universe.*
+
+
+
+For more details on how to manage Rules and the Rule Engine API, please refer to: https://documenter.getpostman.com/view/11218501/SztEY6hi
+
+
+
+# Data Analytics
+
+The Data Analytics service manages the collection and analysis of relevant data from Things. 
+
+**Currently**, the Data Analytics service keeps a record of *Attribute value history* and *Thing active state history* and performs basic data analysis over these records like *MIN/MAX/AVE* and *time spent* on a specific value or state. It also keeps a record of MQTT transactions between Things and BeeHive for network monitoring purposes.
+
+For a list of all functionalities of the Data Analytics service, please refer to its API document: https://documenter.getpostman.com/view/11218501/SztEY6hj
+
+
 

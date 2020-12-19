@@ -90,4 +90,5 @@ Finally, you'd want to have a group that will contain your Thing as well as your
 
 # API
 
-The previous section covers the basics of BeeHive's comprehensive API. To make use of all the fantastic capabilities and functionalities of BeeHive, read the complete API document <u>here</u>.
+The previous section covers the basics of BeeHive's comprehensive API. To make use of all the fantastic capabilities and functionalities of BeeHive, read the API overview <u>here</u>.
+
