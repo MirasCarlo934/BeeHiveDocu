@@ -141,3 +141,6 @@ For a list of all functionalities of the Data Analytics service, please refer to
 
 
 
+# Dashboard
+
+BeeHive also offers a basic web dashboard 
