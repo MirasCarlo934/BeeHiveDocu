@@ -116,11 +116,62 @@ Finally, you'd want to have a way to organize your things. Groups are containers
 
 To create a group, send this request to BeeHive:
 
+***curl --location --request PUT "{{group1URL}}" --data-raw "{{group1JSON}} -H "Content-Type: application/json"***
 
+Then, add your thing to the group:
 
+***curl --location --request POST "{{addThingToGroup1URL}}" --data-raw "{{addThingToGroup1Body}}" -H "Content-Type: application/json"***
 
+Now if you access <u>{{groupURL}}</u>, you'll see a URL under ***_links.things***. Accessing that URL will take you to the list of things contained in the group!
 
-# API
+You can also add a group to another group. Create a new group by sending this request:
 
-The previous section covers the basics of BeeHive's comprehensive API. To make use of all the fantastic capabilities and functionalities of BeeHive, read the API overview <u>here</u>.
+***curl --location --request PUT "{{group2URL}}" --data-raw "{{group2JSON}} -H "Content-Type: application/json"***
+
+Then add that new group to the one we created earlier:
+
+***curl --location --request POST "{{addGroupToGroup1URL}}" --data-raw "{{addGroupToGroup1Body}}" -H "Content-Type: application/json"***
+
+Upon accessing the first group (<u>{{groupURL}}</u>), then accessing the URL under ***_links.groups***, you'll see the second group listed there! You can create more groups and organize them however you want!
+
+Should you want to remove the second group from the first group, just send the following request:
+
+***curl --location --request POST "{{removeGroupFromGroup1URL}}" --data-raw "{{removeGroupFromGroup1Body}}" -H "Content-Type: application/json"***
+
+Accessing the first group's ***_links.groups*** again will return an empty list.
+
+With these simple requests, you can now group your things into more meaningful hierarchies and organizations.
+
+### Get/Set Group Fields
+
+Like things and attributes, groups can also have their fields edited and retrieved.
+
+A common field among all three is the *name* field. Try getting the name of your first group:
+
+***curl --location --request GET "{{groupNameURL}}" -H "Content-Type: application/json"***
+
+And it returns the name of the first group. Simple as that.
+
+But that name just doesn't sit right with you. You want to create a different name. If you send:
+
+***curl --location --request PATCH "{{groupNameURL}}" --data-raw "{{newGroupName}}" -H "Content-Type: application/json"***
+
+And replace the ***{{newGroupName}}*** placeholder with a name that you like, you'll change the name of the group. Try accessing {{groupNameURL}} to see for yourself! You can also check using the group's URL {{groupURL}} and see that the *name* field changed.
+
+# Conclusion
+
+That covers the basics of BeeHive's comprehensive API. You were able to:
+
+1. Create a thing
+2. Add attributes to things
+3. Set/get fields from things, attributes, and groups
+4. Create and manage groups
+
+To make use of all the fantastic capabilities and functionalities of thing, attribute, and group management, read the complete API documentation <u>here</u>.
+
+# Next Tutorial
+
+Before anything else, we recommend that you read up on the <u>REST paradigm of BeeHive's API</u>.
+
+Next we'll tackle <u>how to control things in BeeHive</u> and <u>how to create rules for thing automation</u>.
 
