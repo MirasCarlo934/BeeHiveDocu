@@ -1,146 +1,70 @@
 # Overview
 
-The backbone of BeeHive's API is a RESTful API built with ease-of-use and intuitiveness as the top priority. At its base, the API is split into its four main (current) services:
+The BeeHive API revolves around the management of four main resources:
 
-*show high-level API diagram here*
+1. Things
+2. Attributes
+3. Groups
+4. Rules
 
-Under each service are the resources that they manage. As an example, the Thing Management Platform has three resources: Things, Attributes, and Groups. Access to these resources follow an intuitive hierarchical URL navigation.
+This documentation aims to familiarize you on how to use the BeeHive API, primarily through REST (HTTP) and MQTT.
 
-*show URL navigation here*
+## When to use REST or MQTT?
 
-Performing actions on a resource is simply making use of the standard HTTP methods, which are defined as:
+The REST API is built on top of HTTP which makes it the choice for administrative jobs (eg. creating a new thing, modifying resources). MQTT is focused more on real-time data transmission, particularly on controlling things (ie. changing attribute values).
 
-*show HTTP method table here*
+At its core, the entire BeeHive API is built on REST. However, HTTP can be expensive and slow for low-power devices (ie. things) so a part of the REST API is interfaced by MQTT to provide an optimal solution for transferring small data to and from devices.
 
-Usage of the API basically follows these core mechanisms. When changing the name of an Attribute, you can send a **PATCH** request to **{userID}/things/{UID}/attributes/{attributeID}/name** with the new name in the request body. To get a specific automation rule, simply send a **GET** request to **{userID}/rules/{ruleID**}. And if you want to get ALL the rules, just reduce the URL to **{userID}/rules**.
+As a rule of thumb, if it's a human that will interact with BeeHive, use REST. For things interacting with BeeHive, use MQTT.
 
-## REST
+## How to Read this Documentation
 
-REST, or Representational State Transfer, is a software architecture style which enforces the idea that all resources must be accessible via their individual URL. 
+BeeHive API is split into two: REST and MQTT. 
 
-Aside from this, REST also enforces the concept of **HATEOAS** which basically means that the API must be traversable within itself. This means that, in BeeHive's context, all relevant information and actions performable on a resource are described in the HTTP response for the said resource. 
+# REST
 
-For example, first make a new Thing:
+The REST API is built on top of HTTP and follows the standard of using **URLs** and **request methods** as the main interface of the API.
 
-**curl --location --request PUT "{{thingURL}}" --data-raw "{{thingJSON}}" -H "Content-Type: application/json"**
+**URLs** form the means of traversing the API and accessing resources. Each URL supports specific **request methods** which allow you to perform actions that BeeHive will execute.
 
-*(or access the one you created in the Getting Started page)*
+## Resources
 
-If you enter the URL ***{{thingURL}}*** in your web browser, you'll find a field named **_links** which contains all the relevant stuff to the Thing you're viewing along with the URL to access them.
+This aspect of the REST API is concerned with the access and management of specific resources in your BeeHive IoT universe.
 
-This HATEOAS principle is followed by BeeHive's API, essentially removing the need for reading long and repetitive API documents just to understand how to use the API.
+### URL
 
+{host}:{port}/{userID}/{resourceName}/{resourceID}
 
+1. Thing - {host}:{port}/{userID}/things/{thingID}
+   1. Sample: http://35.241.123.200:8080/testUser/things/testThingID1
+2. Attribute - {host}:{port}/{userID}/attributes/{attributeID}
+   1. Sample: http://35.241.123.200:8080/testUser/attributes/testAttributeID1
+3. Group - {host}:{port}/{userID}/groups/{attributeID}
+   1. Sample: http://35.241.123.200:8080/testUser/groups/testGroupID1
+4. Rules - {host}:{port}/{userID}/rules/{attributeID}
+   1. Sample: http://35.241.123.200:8080/testUser/rules/testRuleID1
 
-# How Do I Get My Thing to Talk With BeeHive?
+### Methods
 
-The MQTT API is the backbone of the Thing-to-BeeHive interface. MQTT is a lightweight, publish-subscribe communication protocol that is ideal for handling communication between Things and BeeHive. *This is the recommended API for communication between Things and BeeHive.*
+1. GET {URL}
+   1. retrieves all information of the resource
+   2. retrieves all relevant resources of this particular resource (eg. thing attributes, things contained in the specified group)
+   3. retrieves relevant actions for the resource (eg. assign thing to a group)
+   4. Sample: http://35.241.123.200:8080/testUser/things/testThingID1
+      1. The links under *_links* contains the relevant resources and actions
+2. POST {URL}
+   1. adds the resource (if it doesn't exist yet)
+   2. returns an error if the URL already contains a resource
+   3. **NOTE:** the body of the POST request follow the JSON structure returned by the GET method, without the *_links* field.
+3. PATCH {URL}
+   1. updates the resource (if it already exists)
+   2. returns an error if the URL does not contain a resource
+4. PUT {URL}
+   1. adds the resource if it doesn't exist yet, updates it otherwise
+5. DELETE {URL}
+   1. deletes resource at specified URL
 
-## MQTT vs HTTP
+### Sample Requests
 
-While BeeHive can be completely interacted with using the HTTP RESTful API, HTTP is considered a very cumbersome protocol to use mainly due to the following:
+## 
 
-1. Heavy data overhead (e.g. HTTP headers)
-2. Slower compared to lower-level protocols (TCP)
-3. Unidirectional communication (BeeHive servers can't send to a Thing via HTTP)
-   - For Things to get updates from BeeHive, they will have to constantly request and request and request and request...
-
-MQTT mitigates these problems by running on top of TCP. It is also lightweight with a small code footprint, requiring small processing power to run. Because of these, MQTT is considered to be ideal for Things.
-
-
-
-# Thing Management Platform
-
-The Thing Management Platform manages three resources: Things, Attributes, and Groups:
-
-*show resource breakdown*
-
-## Thing
-
-*show base fields and performable methods*
-
-## Attribute
-
-*show base fields and performable methods*
-
-## Group
-
-*show base fields and performable methods*
-
-
-
-Full API documentation: https://documenter.getpostman.com/view/11218501/SztEY6Ao
-
-
-
-# Automation Engine
-
-The Automation Engine manages all the automation rules, or *Rules* for short, that govern all Things in a user's BeeHive IoT universe. Rules dictate how Things interact with each other based on changes in their Attributes.
-
-*show how rules work*
-
-## Rule
-
-*show base fields and performable methods*
-
-Rule execution is *event-based*. Rules are only evaluated and executed when a Thing's Attribute changes value.
-
-{{ruleJSON}}
-
-The JSON above is an example of a Rule. It declares two (2) Attributes: *Attribute **{{ruleJSON.attributes[0].aid}}*** of *Thing **{{ruleJSON.attributes[0].uid}}*** and *Attribute **{{ruleJSON.attributes[1].aid}}*** of *Thing **{{ruleJSON.attributes[1].uid}}***. The first Attribute is declared as a ***condition Attribute*** which means it's to be monitored for its value change to evaluate whether or not the Rule executes.
-
-The next part is the *condition block* which contains ***{{ruleJSON.condition}}***. If this condition is satisfied, the Rule executes the *action **{{ruleJSON.actions}}***.  
-
-To test this rule, let's set-up our Things first:
-
-{{ruleThingsPutCURL}}
-
-If you send the Rule JSON above to BeeHive:
-
-{{rulePutCURL}}
-
-It will add the Rule with the RID (Rule ID) ***{{rid}}***. Now, try changing the value of the condition Attribute:
-
-{{ruleAttrValueChangePutCURL}}
-
-Upon accessing the value of the other Attribute:
-
-{{ruleAttrValueGetCURL}}
-
-You'll see that the Attribute value changed! You can play around these two Attributes to further see how your sample Rule runs.
-
-### Cascaded Rules
-
-Because of the way Rules operate, you can set-up a collection of Rules that are dependent on the execution of other Rules. If **Rule 1** changes *Attribute 2* based on the value of *Attribute 1*, you can create **Rule 2** that changes *Attribute 3 and 4* based on the value of *Attribute 2*. BeeHive intelligently *cascades* these Rules together for a seamless operation.
-
-*show cascaded rules diagram*
-
-BeeHive is also smart enough to warn you of any circular references to your Rules.
-
-*show circular rules diagram*
-
-By default, Rules that have action Attributes that are the condition Attributes of Rules preceding it in the Rule cascade chain will not be accepted by BeeHive.
-
-It's important to keep track of your Rules, especially when making use of cascaded Rules. While circular references can be easily avoided, BeeHive does not warn about *spaghettified* Rule chains!
-
-Using Rules, you can set-up the functionality of your entire IoT universe without having to think about interconnecting your Things or how to send data between them. *With BeeHive, you have centralized control over the entire IoT universe.*
-
-
-
-For more details on how to manage Rules and the Rule Engine API, please refer to: https://documenter.getpostman.com/view/11218501/SztEY6hi
-
-
-
-# Data Analytics
-
-The Data Analytics service manages the collection and analysis of relevant data from Things. 
-
-**Currently**, the Data Analytics service keeps a record of *Attribute value history* and *Thing active state history* and performs basic data analysis over these records like *MIN/MAX/AVE* and *time spent* on a specific value or state. It also keeps a record of MQTT transactions between Things and BeeHive for network monitoring purposes.
-
-For a list of all functionalities of the Data Analytics service, please refer to its API document: https://documenter.getpostman.com/view/11218501/SztEY6hj
-
-
-
-# Dashboard
-
-BeeHive also offers a basic web dashboard 
