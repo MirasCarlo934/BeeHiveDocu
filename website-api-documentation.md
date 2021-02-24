@@ -11,25 +11,46 @@ This documentation aims to familiarize you on how to use the BeeHive API, primar
 
 ## When to use REST or MQTT?
 
-The REST API is built on top of HTTP which makes it the choice for administrative jobs (eg. creating a new thing, modifying resources). MQTT is focused more on real-time data transmission, particularly on controlling things (ie. changing attribute values).
+The **REST API** is built on top of HTTP which makes it the choice for administrative jobs (eg. creating a new thing, modifying resources). The **MQTT API** is focused more on real-time data transmission, particularly on controlling things (ie. changing attribute values).
 
 At its core, the entire BeeHive API is built on REST. However, HTTP can be expensive and slow for low-power devices (ie. things) so a part of the REST API is interfaced by MQTT to provide an optimal solution for transferring small data to and from devices.
 
 As a rule of thumb, if it's a human that will interact with BeeHive, use REST. For things interacting with BeeHive, use MQTT.
 
-## How to Read this Documentation
-
-BeeHive API is split into two: REST and MQTT. 
-
 # REST
 
 The REST API is built on top of HTTP and follows the standard of using **URLs** and **request methods** as the main interface of the API.
 
-**URLs** form the means of traversing the API and accessing resources. Each URL supports specific **request methods** which allow you to perform actions that BeeHive will execute.
+Standard REST conventions use **five HTTP methods** or ***verbs*** that are commonplace in HTTP communication. These HTTP verbs correspond to Create, Read, Update, and Delete (CRUD) operations:
 
-## Resources
+1. GET (Read)
+2. POST (Create)
+3. PATCH (Update)
+4. PUT (Create/Update)
+5. DELETE (Delete)
 
-This aspect of the REST API is concerned with the access and management of specific resources in your BeeHive IoT universe.
+These methods are then used on HTTP requests to specific **URLs** which contain a unique resource (ie. thing, attribute, etc.) or collections of resources.
+
+### How to Read this Section
+
+The API structure is intuitive enough that, with just a short read, you should be able to grasp the general idea of how to traverse and use the REST API. As such, it is very much recommended that you [try out the REST API first]() instead of immediately referring to this documentation.
+
+## Collections
+
+### URL
+
+{host}:{port}/{userID}/{resourceName}
+
+1. Things - {host}:{port}/{userID}/things/{thingID}
+   1. Sample: http://35.241.123.200:8080/testUser/things/testThingID1
+2. Attributes (of a thing) - {host}:{port}/{userID}/things/{thingID}/attributes/{attributeID}
+   1. Sample: http://35.241.123.200:8080/testUser/attributes/testAttributeID1
+3. Groups - {host}:{port}/{userID}/groups/{attributeID}
+   1. Sample: http://35.241.123.200:8080/testUser/groups/testGroupID1
+4. Rules - {host}:{port}/{userID}/rules/{attributeID}
+   1. Sample: http://35.241.123.200:8080/testUser/rules/testRuleID1
+
+***NOTE:*** *Notice that the attribute URL is different. This is because attribute IDs are designed to only be unique to a thing (ie. attributes can have the same ID if they're in different things).*
 
 ### URL
 
@@ -37,12 +58,14 @@ This aspect of the REST API is concerned with the access and management of speci
 
 1. Thing - {host}:{port}/{userID}/things/{thingID}
    1. Sample: http://35.241.123.200:8080/testUser/things/testThingID1
-2. Attribute - {host}:{port}/{userID}/attributes/{attributeID}
+2. Attribute - {host}:{port}/{userID}/things/{thingID}/attributes/{attributeID}
    1. Sample: http://35.241.123.200:8080/testUser/attributes/testAttributeID1
 3. Group - {host}:{port}/{userID}/groups/{attributeID}
    1. Sample: http://35.241.123.200:8080/testUser/groups/testGroupID1
 4. Rules - {host}:{port}/{userID}/rules/{attributeID}
    1. Sample: http://35.241.123.200:8080/testUser/rules/testRuleID1
+
+***NOTE:*** *Notice that the attribute URL is different. This is because attribute IDs are designed to only be unique to a thing (ie. attributes can have the same ID if they're in different things).*
 
 ### Methods
 
@@ -65,6 +88,10 @@ This aspect of the REST API is concerned with the access and management of speci
    1. deletes resource at specified URL
 
 ### Sample Requests
+
+#### Get
+
+1. 
 
 ## 
 
